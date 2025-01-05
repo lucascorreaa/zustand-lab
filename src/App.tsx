@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import "./App.css";
+import { useEffect } from "react";
 import { useCounterStore } from "./stores/store";
 
 const setState = () => {
@@ -26,7 +26,8 @@ const OtherComponent = ({ count }: { count: number }) => {
   const incrementAsync = useCounterStore((state) => state.incrementAsync)
 
   useEffect(() => {
-    setState()
+    // setState()
+    // logCount, para usar esse, precisa adicionar o count como dependência
   }, [])
 
   return (
