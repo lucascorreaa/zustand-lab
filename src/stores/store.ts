@@ -5,6 +5,7 @@ type CounterStore = {
   increment: VoidFunction,
   incrementAsync: () => Promise<void>,
   decrement: VoidFunction
+  reset: VoidFunction
 }
 
 export const useCounterStore = create<CounterStore>((set) => ({
@@ -15,5 +16,6 @@ export const useCounterStore = create<CounterStore>((set) => ({
     await new Promise((resolved) => setTimeout(resolved, 1000))
     set((state) => ({count: state.count + 1}))
   },
-  decrement: () => set((state) => ({count: state.count - 1}))
+  decrement: () => set((state) => ({count: state.count - 1})),
+  reset: () => set(() => ({count: 0}))
 }))
