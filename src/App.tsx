@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 import "./App.css";
 import { useCounterStore } from "./stores/store";
+
+const logCount = () => {
+  const count = useCounterStore.getState().count
+  console.log('count', count)
+}
 
 const App = () => {
   const count = useCounterStore((state) => state.count);
@@ -12,6 +18,10 @@ const OtherComponent = ({ count }: { count: number }) => {
   const decrement = useCounterStore((state) => state.decrement)
   // esse incremento aguarda 1s para realizar a ação
   const incrementAsync = useCounterStore((state) => state.incrementAsync)
+
+  useEffect(() => {
+    logCount()
+  }, [count])
 
   return (
     <div className="container">
